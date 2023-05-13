@@ -1,5 +1,9 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Converter from "./components/Converter";
+
 function App() {
-  return <h1>Hi, stranger!</h1>;
+  return <Converter />;
 }
 
 export default App;
