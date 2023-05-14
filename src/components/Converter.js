@@ -1,10 +1,10 @@
-import { useState } from "react";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Input from "./Input";
-import Select from "./Select";
-
+import { useCachedState } from "../lib/hooks";
 import convert from "../lib/convert";
+import Form from "./Form/Form";
+import Label from "./Form/Label";
+import Input from "./Form/Input";
+import Select from "./Form/Select";
+import Options from "./Form/Options";
 
 function Converter() {
   const options = [
@@ -14,52 +14,55 @@ function Converter() {
     { title: "Hex", value: 16 },
   ];
 
-  const defaultFromBase = 10;
-  const defaultToBase = 2;
-
-  const [num, setNum] = useState();
-  const [fromBase, setFromBase] = useState(defaultFromBase);
-  const [toBase, setToBase] = useState(defaultToBase);
-  const result = num ? convert(num, fromBase, toBase) : null;
+  const [num, setNum] = useCachedState("number", 0);
+  const [fromBase, setFromBase] = useCachedState("frombase", 10);
+  const [toBase, setToBase] = useCachedState("tobase", 2);
+  const result = num ? convert(num, fromBase, toBase) : "";
 
   return (
-    <Container>
-      <Form className="border rounded p-3">
+    <Form>
+      <Label>
+        Number
         <Input
-          className="mb-2"
-          label="Number"
           type="text"
           placeholder="Input here..."
-          onChange={setNum}
+          value={num}
+          onChange={(e) => setNum(e.target.value)}
         />
+      </Label>
 
+      <Label>
+        From
         <Select
-          className="mb-2"
-          label="From"
-          options={options}
-          defaultOption={defaultFromBase}
-          ariaLabel="Select number base to convert from"
-          onChange={setFromBase}
-        />
+          aria-label="Select number base to convert from"
+          defaultValue={fromBase}
+          onChange={(e) => setFromBase(e.target.value)}
+        >
+          <Options options={options} />
+        </Select>
+      </Label>
 
+      <Label>
+        To
         <Select
-          className="mb-2"
-          label="To"
-          options={options}
-          defaultOption={defaultToBase}
-          ariaLabel="Select number base to convert to"
-          onChange={setToBase}
-        />
+          aria-label="Select number base to convert to"
+          defaultValue={toBase}
+          onChange={(e) => setToBase(e.target.value)}
+        >
+          <Options options={options} />
+        </Select>
+      </Label>
 
+      <Label>
+        Result
         <Input
-          className="mb-1"
-          label="Result"
           type="text"
           disabled
           value={result}
+          onChange={(e) => setNum(e.target.value)}
         />
-      </Form>
-    </Container>
+      </Label>
+    </Form>
   );
 }
 

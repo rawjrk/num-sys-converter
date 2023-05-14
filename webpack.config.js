@@ -1,12 +1,10 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 let mode = "development";
 const plugins = [
   new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin(),
   new HtmlWebpackPlugin({
     template: "./src/index.html",
   }),
@@ -28,18 +26,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         type: "asset",
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: { publicPath: "" },
-          },
-          "css-loader",
-        ],
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
       {
         test: /\.js$/,

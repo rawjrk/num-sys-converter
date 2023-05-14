@@ -1,9 +1,13 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import GlobalStyle from "./styles/GlobalStyle";
 import Converter from "./components/Converter";
 
 function App() {
-  return <Converter />;
+  return (
+    <>
+      <GlobalStyle />
+      <Converter />
+    </>
+  );
 }
 
 export default App;
