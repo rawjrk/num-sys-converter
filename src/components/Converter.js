@@ -1,10 +1,6 @@
 import { useCachedState } from "../lib/hooks";
 import convert from "../lib/convert";
-import Form from "./Form/Form";
-import Label from "./Form/Label";
-import Input from "./Form/Input";
-import Select from "./Form/Select";
-import Options from "./Form/Options";
+import { Form, Label, Input, Select, Options } from "./Form";
 
 function Converter() {
   const options = [
