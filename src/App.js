@@ -1,6 +1,8 @@
-import GlobalStyle from "./styles/GlobalStyle";
 import Converter from "./components/Converter";
 import { Footer, Link } from "./components/Footer";
+import { ThemeProvider } from "styled-components";
+import { baseTheme } from "./styles/theme";
+import GlobalStyles from "./styles/global";
 
 const options = [
   { title: "Binary [base-2]", value: 2 },
@@ -11,13 +13,13 @@ const options = [
 
 function App() {
   return (
-    <>
-      <GlobalStyle />
+    <ThemeProvider theme={baseTheme}>
+      <GlobalStyles />
       <Converter options={options} />
       <Footer>
         rawjrk &bull; <Link href="https://github.com/rawjrk">github</Link>
       </Footer>
-    </>
+    </ThemeProvider>
   );
 }
 

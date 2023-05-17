@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import RobotoRegularTtf from "../assets/fonts/Roboto/Roboto-Regular.ttf";
 
-const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
   @font-face {
     font-family: "Roboto";
     font-style: normal;
@@ -10,19 +10,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --border: 1px solid #ccc;
-    --bg-body: #eee;
-    --bg-primary: #fff;
-    --bg-secondary: #f3f3f3;
-    --text-primary: #333;
-    --text-secondary: #666;
-    --active-link: #de0000;
+    --border: 1px solid ${(props) => props.theme.colors.border};
   }
 
   body {
     margin: 0;
     font-family: "Roboto", sans-serif;
-    background: var(--bg-body);
+    background: ${(props) => props.theme.colors.body};
+    color: ${(props) => props.theme.colors.font.primary};
   }
 
   #root {
@@ -33,5 +28,3 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 `;
-
-export default GlobalStyle;

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Label = styled.label`
   margin: 0.5rem 0;
+  color: ${(props) => props.theme.colors.font.primary};
   font-size: 1rem;
-  color: var(--text-primary);
 
   :nth-of-type(1) {
     margin-top: 0;

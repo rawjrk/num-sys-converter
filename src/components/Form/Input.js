@@ -4,12 +4,12 @@ const Input = styled.input`
   border: var(--border);
   border-radius: 0.3rem;
   padding: 0.5rem;
-  background-color: var(--bg-primary);
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.font.primary};
   font-size: 1rem;
-  color: var(--text-primary);
 
   :disabled {
-    background-color: var(--bg-secondary);
+    background-color: ${(props) => props.theme.colors.secondary};
   }
 `;
 
