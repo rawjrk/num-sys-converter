@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 const Input = styled.input`
-  border: 1px solid #ccc;
+  border: var(--border);
   border-radius: 0.3rem;
   padding: 0.5rem;
-  background-color: #fff;
+  background-color: var(--bg-primary);
   font-size: 1rem;
-  color: #333;
+  color: var(--text-primary);
 
   :disabled {
-    background-color: #eee;
+    background-color: var(--bg-secondary);
   }
 `;
 
