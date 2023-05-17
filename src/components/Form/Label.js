@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 const Label = styled.label`
-  display: block;
+  margin: 0.5rem 0;
   font-size: 1rem;
-  margin: 0.5rem 0.2rem;
-  display: flex;
-  flex-direction: column;
+  color: #333;
+
+  :nth-of-type(1) {
+    margin-top: 0;
+  }
 `;
 
 export default Label;
