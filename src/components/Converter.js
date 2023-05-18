@@ -10,7 +10,7 @@ function Converter({ options }) {
   const result = num ? convert(num, fromBase, toBase) : "";
 
   return (
-    <Form>
+    <Form id="converter">
       <Label for="number">Number</Label>
       <Input
         id="number"
