@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
 import convert from "../lib/convert";
 import { useCachedState } from "../lib/hooks";
 import { Form, Label, Input, Select, Options } from "./Form";
+import { optionsPropType } from "./Form/Options";
 
 function Converter({ options }) {
   const [num, setNum] = useCachedState("number", "");
@@ -53,12 +53,7 @@ function Converter({ options }) {
 }
 
 Converter.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.exact({
-      title: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
-    })
-  ),
+  options: optionsPropType,
 };
 
 Converter.defaultProps = {
