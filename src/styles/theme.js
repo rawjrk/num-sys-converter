@@ -11,8 +11,29 @@ export const baseTheme = {
 
     border: "#ccc",
 
-    link: {
-      active: "#de0000",
+    active: "#de0000",
+  },
+};
+
+export const lightTheme = {
+  ...baseTheme,
+};
+
+export const darkTheme = {
+  ...baseTheme,
+
+  colors: {
+    ...baseTheme.colors,
+
+    body: "#080808",
+    primary: "#111",
+    secondary: "#222",
+
+    font: {
+      primary: "#ddd",
+      secondary: "#ccc",
     },
+
+    border: "#555",
   },
 };

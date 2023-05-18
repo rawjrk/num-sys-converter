@@ -5,7 +5,7 @@ const Link = styled.a`
   text-decoration: none;
 
   :hover {
-    color: ${(props) => props.theme.colors.link.active};
+    color: ${(props) => props.theme.colors.active};
     text-decoration: underline;
   }
 `;
