@@ -1,13 +1,15 @@
-import convert from "../lib/convert";
-import { useCachedState } from "../lib/hooks";
-import { Form, Label, Input, Select, Options } from "./Form";
-import { optionsPropType } from "./Form/Options";
+import { useCachedState } from "../../lib/hooks";
+import Form from "./components/Form";
+import Label from "./components/Label";
+import Input from "./components/Input";
+import Select from "./components/Select";
+import Options, { optionsPropType } from "./components/Options";
+import convert from "./convert";
 
 function Converter({ options }) {
   const [num, setNum] = useCachedState("number", "");
   const [fromBase, setFromBase] = useCachedState("frombase", 10);
   const [toBase, setToBase] = useCachedState("tobase", 2);
-  const result = num ? convert(num, fromBase, toBase) : "";
 
   return (
     <Form id="converter">
@@ -45,8 +47,7 @@ function Converter({ options }) {
         id="result"
         type="text"
         disabled
-        value={result}
-        onChange={(e) => setNum(e.target.value)}
+        value={num ? convert(num, fromBase, toBase) : ""}
       />
     </Form>
   );

@@ -1,9 +1,10 @@
 import { BsSun, BsMoonStars } from "react-icons/bs";
 import { ThemeProvider } from "styled-components";
 import { useCachedState } from "./lib/hooks";
-import Converter from "./components/Converter";
-import ThemeButton from "./components/ThemeButton";
-import { Footer, Link } from "./components/Footer";
+import Converter from "./feature/converter/Converter";
+import ThemeButton from "./feature/theme/ThemeButton";
+import Footer from "./feature/footer/components/Footer";
+import Link from "./feature/footer/components/Link";
 import { lightTheme, darkTheme } from "./styles/theme";
 import GlobalStyles from "./styles/global";
 import options from "./options.json";

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "./Button/Button";
+import Button from "./components/Button";
 
 const ThemeButton = styled(Button)`
   position: absolute;
