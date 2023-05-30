@@ -13,7 +13,7 @@ function Converter({ options }) {
 
   return (
     <Form id="converter">
-      <Label for="number">Number</Label>
+      <Label htmlFor="number">Number</Label>
       <Input
         id="number"
         type="text"
@@ -22,7 +22,7 @@ function Converter({ options }) {
         onChange={(e) => setNum(e.target.value)}
       />
 
-      <Label for="frombase">From</Label>
+      <Label htmlFor="frombase">From</Label>
       <Select
         id="frombase"
         aria-label="Select number base to convert from"
@@ -32,7 +32,7 @@ function Converter({ options }) {
         <Options options={options} />
       </Select>
 
-      <Label for="tobase">To</Label>
+      <Label htmlFor="tobase">To</Label>
       <Select
         id="tobase"
         aria-label="Select number base to convert to"
@@ -42,7 +42,7 @@ function Converter({ options }) {
         <Options options={options} />
       </Select>
 
-      <Label for="result">Result</Label>
+      <Label htmlFor="result">Result</Label>
       <Input
         id="result"
         type="text"
