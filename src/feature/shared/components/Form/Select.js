@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { renderToStaticMarkup } from "react-dom/server";
+import PropType from "prop-types";
 
 function SelectArrow({ currentColor }) {
   return (
@@ -8,14 +9,22 @@ function SelectArrow({ currentColor }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke={currentColor}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <polyline points="6 9 12 15 18 9"></polyline>
+      <polyline points="6 9 12 15 18 9" />
     </svg>
   );
 }
+
+SelectArrow.propTypes = {
+  currentColor: PropType.string,
+};
+
+SelectArrow.defaultProps = {
+  currentColor: "#000",
+};
 
 const Select = styled.select`
   border: var(--border);
