@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Button from "./components/Button";
 import { BsSun, BsMoonStars } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { themeNameSelector, toogleTheme } from "./themeSlice";
+import { Button } from "../shared";
 
 const ThemeButton = styled(Button)`
   position: absolute;

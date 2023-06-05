@@ -1,17 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
-import Form from "./components/Form";
-import Label from "./components/Label";
-import Input from "./components/Input";
-import Select from "./components/Select";
-import Options, { optionsPropType } from "./components/Options";
-import convert from "./convert";
-
+import {
+  Form,
+  Label,
+  Input,
+  Select,
+  Options,
+  optionsPropType,
+} from "../shared";
 import {
   setNumber,
   setFromBase,
   setToBase,
   selectConverter,
 } from "./converterSlice";
+import convert from "./convert";
 
 function Converter({ options }) {
   const { number, fromBase, toBase } = useSelector(selectConverter);

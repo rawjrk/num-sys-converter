@@ -3,10 +3,9 @@ import { useSelector } from "react-redux";
 import { themeNameSelector } from "./feature/theme/themeSlice";
 import * as themeStyles from "./styles/theme";
 import GlobalStyles from "./styles/global";
-import ThemeToogler from "./feature/theme/ThemeToogler";
-import Footer from "./feature/footer/components/Footer";
-import Link from "./feature/footer/components/Link";
-import Converter from "./feature/converter/Converter";
+import { ThemeToogler } from "./feature/theme";
+import { Footer, Link } from "./feature/shared";
+import { Converter } from "./feature/converter";
 import options from "./options.json";
 
 function App() {
@@ -19,7 +18,8 @@ function App() {
       <ThemeToogler />
       <Converter options={options} />
       <Footer>
-        rawjrk &bull; <Link href="https://github.com/rawjrk">github</Link>
+        rawjrk &bull;{" "}
+        <Link href="https://github.com/rawjrk/num-sys-converter">github</Link>
       </Footer>
     </ThemeProvider>
   );
