@@ -1,4 +1,21 @@
 import styled from "styled-components";
+import { renderToStaticMarkup } from "react-dom/server";
+
+function SelectArrow({ currentColor }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={currentColor}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  );
+}
 
 const Select = styled.select`
   border: var(--border);
@@ -9,7 +26,12 @@ const Select = styled.select`
   font-size: 1rem;
 
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,${(props) =>
+    encodeURIComponent(
+      renderToStaticMarkup(
+        <SelectArrow currentColor={props.theme.colors.font.primary} />
+      )
+    )}");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 1rem;
