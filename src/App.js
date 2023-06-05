@@ -1,26 +1,22 @@
-import { BsSun, BsMoonStars } from "react-icons/bs";
 import { ThemeProvider } from "styled-components";
-import { useCachedState } from "./lib/hooks";
-import Converter from "./feature/converter/Converter";
-import ThemeButton from "./feature/theme/ThemeButton";
+import { useSelector } from "react-redux";
+import { themeNameSelector } from "./feature/theme/themeSlice";
+import * as themeStyles from "./styles/theme";
+import GlobalStyles from "./styles/global";
+import ThemeToogler from "./feature/theme/ThemeToogler";
 import Footer from "./feature/footer/components/Footer";
 import Link from "./feature/footer/components/Link";
-import { lightTheme, darkTheme } from "./styles/theme";
-import GlobalStyles from "./styles/global";
+import Converter from "./feature/converter/Converter";
 import options from "./options.json";
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useCachedState("darktheme", false);
-  const toogleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+  const themeName = useSelector(themeNameSelector);
+  const currentTheme = themeStyles[themeName];
 
   return (
-    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+    <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <ThemeButton onClick={toogleTheme}>
-        {isDarkTheme ? <BsSun /> : <BsMoonStars />}
-      </ThemeButton>
+      <ThemeToogler />
       <Converter options={options} />
       <Footer>
         rawjrk &bull; <Link href="https://github.com/rawjrk">github</Link>
