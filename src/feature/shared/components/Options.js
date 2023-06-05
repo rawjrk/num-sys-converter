@@ -12,10 +12,11 @@ function Options({ options = [] }) {
   );
 }
 
-export const optionsPropType = PropTypes.arrayOf(
+const optionsPropType = PropTypes.arrayOf(
   PropTypes.exact({
     title: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, null])
+      .isRequired,
   })
 );
 

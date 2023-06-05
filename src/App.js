@@ -5,7 +5,6 @@ import GlobalStyles from "./styles/global";
 import { ThemeToogler, themeNameSelector } from "./feature/appearance";
 import { Footer, Link } from "./feature/shared";
 import { Converter } from "./feature/converter";
-import options from "./options.json";
 
 function App() {
   const themeName = useSelector(themeNameSelector);
@@ -15,7 +14,7 @@ function App() {
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
       <ThemeToogler />
-      <Converter options={options} />
+      <Converter />
       <Footer>
         rawjrk &bull;{" "}
         <Link href="https://github.com/rawjrk/num-sys-converter">github</Link>

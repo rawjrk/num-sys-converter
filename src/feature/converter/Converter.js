@@ -1,21 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import {
-  Form,
-  Label,
-  Input,
-  Select,
-  Options,
-  optionsPropType,
-} from "../shared";
+import { Form, Label, Input, Select, Options } from "../shared";
 import {
   setNumber,
   setFromBase,
   setToBase,
   selectConverter,
 } from "./converterSlice";
+
+import options from "./options.json";
 import convert from "./convert";
 
-function Converter({ options }) {
+function Converter() {
   const { number, fromBase, toBase } = useSelector(selectConverter);
   const dispatch = useDispatch();
 
@@ -60,13 +55,5 @@ function Converter({ options }) {
     </Form>
   );
 }
-
-Converter.propTypes = {
-  options: optionsPropType,
-};
-
-Converter.defaultProps = {
-  options: [],
-};
 
 export default Converter;
