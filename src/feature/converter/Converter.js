@@ -14,6 +14,11 @@ function Converter() {
   const { number, fromBase, toBase } = useSelector(selectConverter);
   const dispatch = useDispatch();
 
+  const onNumberChange = (e) => dispatch(setNumber(e.target.value));
+  const onFromBaseChange = (e) => dispatch(setFromBase(Number(e.target.value)));
+  const onToBaseChange = (e) => dispatch(setToBase(Number(e.target.value)));
+  const result = number ? convert(number, fromBase, toBase) : "";
+
   return (
     <Form id="converter">
       <Label htmlFor="number">Number</Label>
@@ -22,7 +27,7 @@ function Converter() {
         type="text"
         placeholder="Input here..."
         value={number}
-        onChange={(e) => dispatch(setNumber(e.target.value))}
+        onChange={onNumberChange}
       />
 
       <Label htmlFor="frombase">From</Label>
@@ -30,7 +35,7 @@ function Converter() {
         id="frombase"
         aria-label="Select number base to convert from"
         defaultValue={fromBase}
-        onChange={(e) => dispatch(setFromBase(Number(e.target.value)))}
+        onChange={onFromBaseChange}
       >
         <Options options={options} />
       </Select>
@@ -40,18 +45,13 @@ function Converter() {
         id="tobase"
         aria-label="Select number base to convert to"
         defaultValue={toBase}
-        onChange={(e) => dispatch(setToBase(Number(e.target.value)))}
+        onChange={onToBaseChange}
       >
         <Options options={options} />
       </Select>
 
       <Label htmlFor="result">Result</Label>
-      <Input
-        id="result"
-        type="text"
-        disabled
-        value={number ? convert(number, fromBase, toBase) : ""}
-      />
+      <Input id="result" type="text" disabled value={result} />
     </Form>
   );
 }
