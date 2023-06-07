@@ -9,7 +9,14 @@
     "plugin:react/jsx-runtime",
     "plugin:prettier/recommended"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": ["**.test.js"],
+      "env": { "jest/globals": true },
+      "extends": ["plugin:jest/recommended"],
+      "plugins": ["jest"]
+    }
+  ],
   "parserOptions": {
     "ecmaFeatures": { "jsx": true },
     "ecmaVersion": "latest",
