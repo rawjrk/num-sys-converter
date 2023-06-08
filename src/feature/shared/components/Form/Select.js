@@ -1,30 +1,7 @@
 import styled from "styled-components";
-import { renderToStaticMarkup } from "react-dom/server";
-import PropType from "prop-types";
 
-function SelectArrow({ currentColor }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={currentColor}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-}
-
-SelectArrow.propTypes = {
-  currentColor: PropType.string,
-};
-
-SelectArrow.defaultProps = {
-  currentColor: "#000",
-};
+const selectArrow = (currentColor = "#000") =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="${currentColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
 
 const Select = styled.select`
   border: var(--border);
@@ -36,11 +13,7 @@ const Select = styled.select`
 
   appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,${(props) =>
-    encodeURIComponent(
-      renderToStaticMarkup(
-        <SelectArrow currentColor={props.theme.colors.font.primary} />
-      )
-    )}");
+    encodeURIComponent(selectArrow(props.theme.colors.font.primary))}");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 1rem;
