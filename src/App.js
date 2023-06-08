@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import * as themeStyles from "./styles/theme";
 import GlobalStyles from "./styles/global";
-import { ThemeToogler, themeNameSelector } from "./features/appearance";
+import { ThemeToogler, themeNameSelector } from "./features/theme";
 import { Footer, Link } from "./features/shared";
 import { Converter } from "./features/converter";
 
