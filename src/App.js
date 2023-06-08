@@ -2,9 +2,9 @@ import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import * as themeStyles from "./styles/theme";
 import GlobalStyles from "./styles/global";
-import { ThemeToogler, themeNameSelector } from "./feature/appearance";
-import { Footer, Link } from "./feature/shared";
-import { Converter } from "./feature/converter";
+import { ThemeToogler, themeNameSelector } from "./features/appearance";
+import { Footer, Link } from "./features/shared";
+import { Converter } from "./features/converter";
 
 function App() {
   const themeName = useSelector(themeNameSelector);

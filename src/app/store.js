@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { converterReducer } from "../feature/converter";
-import { themeReducer } from "../feature/appearance";
+import { converterReducer } from "../features/converter";
+import { themeReducer } from "../features/appearance";
 
 export default configureStore({
   reducer: {
