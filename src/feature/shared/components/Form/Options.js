@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function Options({ options = [] }) {
+function Options({ options }) {
   return (
     <>
       {options.map((option) => (
@@ -12,16 +12,14 @@ function Options({ options = [] }) {
   );
 }
 
-const optionsPropType = PropTypes.arrayOf(
-  PropTypes.exact({
-    title: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, null])
-      .isRequired,
-  })
-);
-
 Options.propTypes = {
-  options: optionsPropType,
+  options: PropTypes.arrayOf(
+    PropTypes.exact({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+    })
+  ),
 };
 
 Options.defaultProps = {
