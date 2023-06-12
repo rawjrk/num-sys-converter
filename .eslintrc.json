@@ -11,10 +11,13 @@
   ],
   "overrides": [
     {
-      "files": ["**.test.js"],
+      "files": ["**.test.js", "setupTests.js", "test-utils.js"],
       "env": { "jest/globals": true },
       "extends": ["plugin:jest/recommended"],
-      "plugins": ["jest"]
+      "plugins": ["jest"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
     }
   ],
   "parserOptions": {
@@ -24,7 +27,8 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/prefer-default-export": "off"
   },
   "ignorePatterns": ["dist/**"]
 }
