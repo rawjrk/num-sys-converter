@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Options } from "..";
+import { Options } from "../features/shared";
 
 describe("component Options", () => {
   it("renders successfully", () => {

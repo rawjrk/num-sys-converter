@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../../utils/test-utils";
-import { Converter } from "..";
+import { renderWithProviders } from "../utils/test-utils";
+import { Converter } from "../features/converter";
 
 describe("component Converter", () => {
   it("all labels in place", () => {
