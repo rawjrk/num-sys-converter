@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Options } from "../features/shared";
 
 describe("component Options", () => {
-  it("renders successfully", () => {
+  it("should render successfully", () => {
     const options = [
       { title: "Opt. 1", value: 1 },
       { title: "Opt. 2", value: 2 },

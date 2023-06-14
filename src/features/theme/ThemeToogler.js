@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { BsSun, BsMoonStars } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import { themeNameSelector, toogleTheme } from "./themeSlice";
 import { Button } from "../shared";
 
@@ -16,15 +16,25 @@ const ThemeButton = styled(Button)`
   }
 `;
 
-function ThemeToogler() {
+function ThemeToogler({ showOnDarkTheme, showOnLightTheme }) {
   const themeName = useSelector(themeNameSelector);
   const dispatch = useDispatch();
 
   return (
     <ThemeButton onClick={() => dispatch(toogleTheme())}>
-      {themeName === "darkTheme" ? <BsSun /> : <BsMoonStars />}
+      {themeName === "darkTheme" ? showOnDarkTheme : showOnLightTheme}
     </ThemeButton>
   );
 }
+
+ThemeToogler.propTypes = {
+  showOnDarkTheme: PropTypes.node.isRequired,
+  showOnLightTheme: PropTypes.node.isRequired,
+};
+
+ThemeToogler.defaultProps = {
+  showOnDarkTheme: "switch to light theme",
+  showOnLightTheme: "switch to dark theme",
+};
 
 export default ThemeToogler;

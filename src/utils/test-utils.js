@@ -10,15 +10,20 @@ export function renderWithProviders(
   {
     preloadedState = {},
     store = setupStore(preloadedState),
+    isThemeRequired = false,
     ...renderOptions
   } = {}
 ) {
   function Wrapper({ children }) {
-    return (
-      <Provider store={store}>
-        <ThemeProvider theme={baseTheme}>{children}</ThemeProvider>
-      </Provider>
-    );
+    if (isThemeRequired) {
+      return (
+        <Provider store={store}>
+          <ThemeProvider theme={baseTheme}>{children}</ThemeProvider>
+        </Provider>
+      );
+    }
+
+    return <Provider store={store}>{children}</Provider>;
   }
   Wrapper.propTypes = {
     children: PropTypes.node.isRequired,

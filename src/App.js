@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
+import { BsSun, BsMoonStars } from "react-icons/bs";
 import * as themeStyles from "./styles/theme";
 import GlobalStyles from "./styles/global";
 import { ThemeToogler, themeNameSelector } from "./features/theme";
@@ -13,7 +14,10 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <ThemeToogler />
+      <ThemeToogler
+        showOnDarkTheme={<BsSun />}
+        showOnLightTheme={<BsMoonStars />}
+      />
       <Converter />
       <Footer>
         rawjrk &bull;{" "}
