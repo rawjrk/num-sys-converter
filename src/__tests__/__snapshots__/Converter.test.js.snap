@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`storage state and form inputs matches snapshot 1`] = `
+<form
+  className="Form-sc-bqln4y-0 eZRpdY"
+  id="converter"
+>
+  <label
+    className="Label-sc-44o6as-0 wNcHG"
+    htmlFor="number"
+  >
+    Number
+  </label>
+  <input
+    className="Input-sc-1nwo6tk-0 euQOgX"
+    id="number"
+    onChange={[Function]}
+    placeholder="Input here..."
+    type="text"
+    value="13"
+  />
+  <label
+    className="Label-sc-44o6as-0 wNcHG"
+    htmlFor="frombase"
+  >
+    From
+  </label>
+  <select
+    aria-label="Select number base to convert from"
+    className="Select-sc-c4x2an-0 kFNIMj"
+    defaultValue={10}
+    id="frombase"
+    onChange={[Function]}
+  >
+    <option
+      id={2}
+      value={2}
+    >
+      Binary [base-2]
+    </option>
+    <option
+      id={8}
+      value={8}
+    >
+      Octal [base-8]
+    </option>
+    <option
+      id={10}
+      value={10}
+    >
+      Decimal [base-10]
+    </option>
+    <option
+      id={16}
+      value={16}
+    >
+      Hexadecimal [base-16]
+    </option>
+  </select>
+  <label
+    className="Label-sc-44o6as-0 wNcHG"
+    htmlFor="tobase"
+  >
+    To
+  </label>
+  <select
+    aria-label="Select number base to convert to"
+    className="Select-sc-c4x2an-0 kFNIMj"
+    defaultValue={2}
+    id="tobase"
+    onChange={[Function]}
+  >
+    <option
+      id={2}
+      value={2}
+    >
+      Binary [base-2]
+    </option>
+    <option
+      id={8}
+      value={8}
+    >
+      Octal [base-8]
+    </option>
+    <option
+      id={10}
+      value={10}
+    >
+      Decimal [base-10]
+    </option>
+    <option
+      id={16}
+      value={16}
+    >
+      Hexadecimal [base-16]
+    </option>
+  </select>
+  <label
+    className="Label-sc-44o6as-0 wNcHG"
+    htmlFor="result"
+  >
+    Result
+  </label>
+  <input
+    className="Input-sc-1nwo6tk-0 euQOgX"
+    disabled={true}
+    id="result"
+    type="text"
+    value="1101"
+  />
+</form>
+`;

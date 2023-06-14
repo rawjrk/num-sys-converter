@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { render } from "@testing-library/react";
+import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { setupStore } from "../app/store";
@@ -30,4 +31,25 @@ export function renderWithProviders(
   };
 
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+}
+
+export function snapshotWithProviders(
+  ui,
+  {
+    preloadedState = {},
+    store = setupStore(preloadedState),
+    isThemeRequired = false,
+  } = {}
+) {
+  if (isThemeRequired) {
+    return renderer
+      .create(
+        <Provider store={store}>
+          <ThemeProvider theme={baseTheme}>{ui}</ThemeProvider>
+        </Provider>
+      )
+      .toJSON();
+  }
+
+  return renderer.create(<Provider store={store}>{ui}</Provider>).toJSON();
 }

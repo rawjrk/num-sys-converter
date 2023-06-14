@@ -1,14 +1,19 @@
 import { screen, fireEvent } from "@testing-library/react";
-import { renderWithProviders } from "../utils/test-utils";
+import {
+  renderWithProviders,
+  snapshotWithProviders,
+} from "../utils/test-utils";
 import { Converter } from "../features/converter";
 
+const setupOptions = {
+  isThemeRequired: true,
+  preloadedState: {
+    converter: { number: "13", fromBase: 10, toBase: 2 },
+  },
+};
+
 const setup = () => {
-  const { store } = renderWithProviders(<Converter />, {
-    isThemeRequired: true,
-    preloadedState: {
-      converter: { number: "13", fromBase: 10, toBase: 2 },
-    },
-  });
+  const { store } = renderWithProviders(<Converter />, setupOptions);
 
   const numberInput = screen.getByLabelText("Number");
   const fromSelect = screen.getByLabelText("From");
@@ -50,5 +55,10 @@ describe("storage state and form inputs", () => {
     expect(fromSelect).toHaveDisplayValue(/octal/i);
     expect(toSelect).toHaveDisplayValue(/hex/i);
     expect(resultBox).toHaveValue("2f");
+  });
+
+  it("matches snapshot", () => {
+    const tree = snapshotWithProviders(<Converter />, setupOptions);
+    expect(tree).toMatchSnapshot();
   });
 });
