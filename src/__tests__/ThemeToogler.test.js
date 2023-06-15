@@ -5,7 +5,7 @@ import {
 } from "../utils/test-utils";
 import { ThemeToogler } from "../features/theme";
 
-const setupOptions = { isThemeRequired: true };
+const setupOptions = { includeTheme: true };
 
 describe("component ThemeToogler", () => {
   it("should render successfully", () => {

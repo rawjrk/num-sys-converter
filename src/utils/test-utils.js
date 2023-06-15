@@ -6,25 +6,41 @@ import { ThemeProvider } from "styled-components";
 import { setupStore } from "../app/store";
 import { baseTheme } from "../styles/theme";
 
+function Providers({ children, store, includeTheme }) {
+  return includeTheme ? (
+    <Provider store={store}>
+      <ThemeProvider theme={baseTheme}>{children}</ThemeProvider>
+    </Provider>
+  ) : (
+    <Provider store={store}>{children}</Provider>
+  );
+}
+
+Providers.propTypes = {
+  children: PropTypes.node.isRequired,
+  store: PropTypes.any.isRequired,
+  includeTheme: PropTypes.bool,
+};
+
+Providers.defaultProps = {
+  includeTheme: false,
+};
+
 export function renderWithProviders(
   ui,
   {
     preloadedState = {},
     store = setupStore(preloadedState),
-    isThemeRequired = false,
+    includeTheme = false,
     ...renderOptions
   } = {}
 ) {
   function Wrapper({ children }) {
-    if (isThemeRequired) {
-      return (
-        <Provider store={store}>
-          <ThemeProvider theme={baseTheme}>{children}</ThemeProvider>
-        </Provider>
-      );
-    }
-
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Providers store={store} includeTheme={includeTheme}>
+        {children}
+      </Providers>
+    );
   }
   Wrapper.propTypes = {
     children: PropTypes.node.isRequired,
@@ -38,18 +54,14 @@ export function snapshotWithProviders(
   {
     preloadedState = {},
     store = setupStore(preloadedState),
-    isThemeRequired = false,
+    includeTheme = false,
   } = {}
 ) {
-  if (isThemeRequired) {
-    return renderer
-      .create(
-        <Provider store={store}>
-          <ThemeProvider theme={baseTheme}>{ui}</ThemeProvider>
-        </Provider>
-      )
-      .toJSON();
-  }
-
-  return renderer.create(<Provider store={store}>{ui}</Provider>).toJSON();
+  return renderer
+    .create(
+      <Providers store={store} includeTheme={includeTheme}>
+        {ui}
+      </Providers>
+    )
+    .toJSON();
 }

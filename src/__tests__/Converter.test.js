@@ -6,7 +6,7 @@ import {
 import { Converter } from "../features/converter";
 
 const setupOptions = {
-  isThemeRequired: true,
+  includeTheme: true,
   preloadedState: {
     converter: { number: "13", fromBase: 10, toBase: 2 },
   },
