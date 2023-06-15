@@ -13,14 +13,14 @@ const setupOptions = {
 };
 
 const setup = () => {
-  const { store } = renderWithProviders(<Converter />, setupOptions);
+  const render = renderWithProviders(<Converter />, setupOptions);
 
   const numberInput = screen.getByLabelText("Number");
   const fromSelect = screen.getByLabelText("From");
   const toSelect = screen.getByLabelText("To");
   const resultBox = screen.getByLabelText("Result");
 
-  return { store, numberInput, fromSelect, toSelect, resultBox };
+  return { ...render, numberInput, fromSelect, toSelect, resultBox };
 };
 
 describe("component Converter", () => {
@@ -36,11 +36,15 @@ describe("component Converter", () => {
 
 describe("storage state and form inputs", () => {
   it("should match initial values", () => {
-    const { numberInput, fromSelect, toSelect, resultBox } = setup();
+    const { store, numberInput, fromSelect, toSelect, resultBox } = setup();
+    const { converter } = store.getState();
 
     expect(numberInput).toHaveValue("13");
+    expect(converter.number).toBe("13");
     expect(fromSelect).toHaveDisplayValue(/decimal/i);
+    expect(converter.fromBase).toBe(10);
     expect(toSelect).toHaveDisplayValue(/binary/i);
+    expect(converter.toBase).toBe(2);
     expect(resultBox).toHaveValue("1101");
   });
 
@@ -51,9 +55,14 @@ describe("storage state and form inputs", () => {
     fireEvent.change(fromSelect, { target: { value: "8" } });
     fireEvent.change(toSelect, { target: { value: "16" } });
 
+    const { converter } = store.getState();
+
     expect(numberInput).toHaveValue("57");
+    expect(converter.number).toBe("57");
     expect(fromSelect).toHaveDisplayValue(/octal/i);
+    expect(converter.fromBase).toBe(8);
     expect(toSelect).toHaveDisplayValue(/hex/i);
+    expect(converter.toBase).toBe(16);
     expect(resultBox).toHaveValue("2f");
   });
 

@@ -28,8 +28,8 @@ function ThemeToogler({ showOnDarkTheme, showOnLightTheme }) {
 }
 
 ThemeToogler.propTypes = {
-  showOnDarkTheme: PropTypes.node.isRequired,
-  showOnLightTheme: PropTypes.node.isRequired,
+  showOnDarkTheme: PropTypes.node,
+  showOnLightTheme: PropTypes.node,
 };
 
 ThemeToogler.defaultProps = {

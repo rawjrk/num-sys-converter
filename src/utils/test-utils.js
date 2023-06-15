@@ -18,7 +18,7 @@ function Providers({ children, store, includeTheme }) {
 
 Providers.propTypes = {
   children: PropTypes.node.isRequired,
-  store: PropTypes.any.isRequired,
+  store: PropTypes.any.isRequired, // eslint-disable-line
   includeTheme: PropTypes.bool,
 };
 

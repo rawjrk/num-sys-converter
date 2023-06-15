@@ -5,7 +5,14 @@ import {
 } from "../utils/test-utils";
 import { ThemeToogler } from "../features/theme";
 
-const setupOptions = { includeTheme: true };
+const setupOptions = {
+  includeTheme: true,
+  preloadedState: { theme: { name: "lightTheme" } },
+};
+
+const setup = () => {
+  return renderWithProviders(<ThemeToogler />, setupOptions);
+};
 
 describe("component ThemeToogler", () => {
   it("should render successfully", () => {
@@ -14,18 +21,18 @@ describe("component ThemeToogler", () => {
   });
 
   it("should render and switch to propper text", () => {
-    renderWithProviders(<ThemeToogler />, setupOptions);
-    /* assuming state initialized with "lightTheme" */
+    const { store } = setup();
 
-    expect(screen.queryByText(/switch to dark theme/i)).toBeInTheDocument();
-    expect(
-      screen.queryByText(/switch to light theme/i)
-    ).not.toBeInTheDocument();
+    expect(store.getState().theme.name).toBe("lightTheme");
+    expect(screen.queryByText(/to dark/i)).toBeInTheDocument();
+    expect(screen.queryByText(/to light/i)).not.toBeInTheDocument();
 
     const button = screen.getByRole("button");
     fireEvent.click(button);
-    expect(screen.queryByText(/switch to light theme/i)).toBeInTheDocument();
-    expect(screen.queryByText(/switch to dark theme/i)).not.toBeInTheDocument();
+
+    expect(store.getState().theme.name).toBe("darkTheme");
+    expect(screen.queryByText(/to light/i)).toBeInTheDocument();
+    expect(screen.queryByText(/to dark/i)).not.toBeInTheDocument();
   });
 
   it("matches snapshot", () => {

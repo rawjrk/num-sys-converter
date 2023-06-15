@@ -13,7 +13,7 @@ const themeSlice = createSlice({
       switch (state.name) {
         case "darkTheme":
           state.name = "lightTheme";
-          return;
+          break;
         case "lightTheme":
           state.name = "darkTheme";
           break;
