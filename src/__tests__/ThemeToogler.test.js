@@ -1,9 +1,5 @@
 import { screen, fireEvent } from "@testing-library/react";
-import {
-  renderWithProviders,
-  snapshotWithProviders,
-} from "../utils/test-utils";
-import { ThemeToogler } from "../features/theme";
+import ThemeToogler from "../features/theme/ThemeToogler";
 
 const setupOptions = {
   includeTheme: true,
@@ -14,29 +10,33 @@ const setup = () => {
   return renderWithProviders(<ThemeToogler />, setupOptions);
 };
 
-describe("component ThemeToogler", () => {
-  it("should render successfully", () => {
-    renderWithProviders(<ThemeToogler />, setupOptions);
-    expect(screen.getByRole("button")).toBeInTheDocument();
-  });
+test("renders successfully", () => {
+  renderWithProviders(<ThemeToogler />, setupOptions);
+  expect(screen.getByRole("button")).toBeInTheDocument();
+});
 
-  it("should render and switch to propper text", () => {
-    const { store } = setup();
+test("renders propper text on init", () => {
+  const { store } = setup();
 
-    expect(store.getState().theme.name).toBe("lightTheme");
-    expect(screen.queryByText(/to dark/i)).toBeInTheDocument();
-    expect(screen.queryByText(/to light/i)).not.toBeInTheDocument();
+  expect(store.getState().theme.name).toBe("lightTheme");
+  expect(screen.queryByText(/to dark/i)).toBeInTheDocument();
+  expect(screen.queryByText(/to light/i)).not.toBeInTheDocument();
+});
 
-    const button = screen.getByRole("button");
-    fireEvent.click(button);
+test("renders propper text on switch", () => {
+  const { store } = setup();
 
-    expect(store.getState().theme.name).toBe("darkTheme");
-    expect(screen.queryByText(/to light/i)).toBeInTheDocument();
-    expect(screen.queryByText(/to dark/i)).not.toBeInTheDocument();
-  });
+  expect(store.getState().theme.name).toBe("lightTheme");
 
-  it("matches snapshot", () => {
-    const tree = snapshotWithProviders(<ThemeToogler />, setupOptions);
-    expect(tree).toMatchSnapshot();
-  });
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
+
+  expect(store.getState().theme.name).toBe("darkTheme");
+  expect(screen.queryByText(/to light/i)).toBeInTheDocument();
+  expect(screen.queryByText(/to dark/i)).not.toBeInTheDocument();
+});
+
+test("matches snapshot", () => {
+  const tree = snapshotWithProviders(<ThemeToogler />, setupOptions);
+  expect(tree).toMatchSnapshot();
 });

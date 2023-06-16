@@ -6,8 +6,8 @@
     "build-dev": "webpack",
     "lint": "eslint .",
     "test": "jest",
-    "test-nc": "jest --coverage=false",
-    "test-w": "jest --watch"
+    "test-w": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "keywords": [
     "react",

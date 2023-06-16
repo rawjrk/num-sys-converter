@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component ThemeToogler matches snapshot 1`] = `
+exports[`matches snapshot 1`] = `
 <button
   className="Button-sc-cn90ei-0 ThemeToogler__ThemeButton-sc-1e5kdr8-0 jSFdDE KxIsX"
   onClick={[Function]}

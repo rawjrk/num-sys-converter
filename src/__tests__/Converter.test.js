@@ -1,9 +1,5 @@
 import { screen, fireEvent } from "@testing-library/react";
-import {
-  renderWithProviders,
-  snapshotWithProviders,
-} from "../utils/test-utils";
-import { Converter } from "../features/converter";
+import Converter from "../features/converter/Converter";
 
 const setupOptions = {
   includeTheme: true,
@@ -23,19 +19,17 @@ const setup = () => {
   return { ...render, numberInput, fromSelect, toSelect, resultBox };
 };
 
-describe("component Converter", () => {
-  it("should have all labels in place", () => {
-    setup();
+test("all labels in place", () => {
+  setup();
 
-    expect(screen.getByText(/Number/i)).toBeInTheDocument();
-    expect(screen.getByText(/From/i)).toBeInTheDocument();
-    expect(screen.getByText(/To/i)).toBeInTheDocument();
-    expect(screen.getByText(/Result/i)).toBeInTheDocument();
-  });
+  expect(screen.getByText(/Number/i)).toBeInTheDocument();
+  expect(screen.getByText(/From/i)).toBeInTheDocument();
+  expect(screen.getByText(/To/i)).toBeInTheDocument();
+  expect(screen.getByText(/Result/i)).toBeInTheDocument();
 });
 
 describe("storage state and form inputs", () => {
-  it("should match initial values", () => {
+  test("match initial values", () => {
     const { store, numberInput, fromSelect, toSelect, resultBox } = setup();
     const { converter } = store.getState();
 
@@ -48,7 +42,7 @@ describe("storage state and form inputs", () => {
     expect(resultBox).toHaveValue("1101");
   });
 
-  it("should amend on change", () => {
+  test("amend on change", () => {
     const { store, numberInput, fromSelect, toSelect, resultBox } = setup();
 
     fireEvent.change(numberInput, { target: { value: "57" } });
@@ -65,9 +59,9 @@ describe("storage state and form inputs", () => {
     expect(converter.toBase).toBe(16);
     expect(resultBox).toHaveValue("2f");
   });
+});
 
-  it("matches snapshot", () => {
-    const tree = snapshotWithProviders(<Converter />, setupOptions);
-    expect(tree).toMatchSnapshot();
-  });
+test("matches snapshot", () => {
+  const tree = snapshotWithProviders(<Converter />, setupOptions);
+  expect(tree).toMatchSnapshot();
 });

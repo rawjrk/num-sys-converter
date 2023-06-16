@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component App matches snapshot 1`] = `
+exports[`matches snapshot 1`] = `
 [
   <button
     className="Button-sc-cn90ei-0 ThemeToogler__ThemeButton-sc-1e5kdr8-0 jSFdDE KxIsX"
@@ -29,17 +29,17 @@ exports[`component App matches snapshot 1`] = `
     </svg>
   </button>,
   <form
-    className="Form-sc-bqln4y-0 eZRpdY"
+    className="Form-sc-1ufwmkm-0 etyVqS"
     id="converter"
   >
     <label
-      className="Label-sc-44o6as-0 wNcHG"
+      className="Label-sc-p42w1g-0 jPAJlC"
       htmlFor="number"
     >
       Number
     </label>
     <input
-      className="Input-sc-1nwo6tk-0 euQOgX"
+      className="Input-sc-1qsdt6o-0 gKPVqn"
       id="number"
       onChange={[Function]}
       placeholder="Input here..."
@@ -47,14 +47,14 @@ exports[`component App matches snapshot 1`] = `
       value=""
     />
     <label
-      className="Label-sc-44o6as-0 wNcHG"
+      className="Label-sc-p42w1g-0 jPAJlC"
       htmlFor="frombase"
     >
       From
     </label>
     <select
       aria-label="Select number base to convert from"
-      className="Select-sc-c4x2an-0 kFNIMj"
+      className="Select-sc-31pzb-0 cuqxij"
       defaultValue={10}
       id="frombase"
       onChange={[Function]}
@@ -85,14 +85,14 @@ exports[`component App matches snapshot 1`] = `
       </option>
     </select>
     <label
-      className="Label-sc-44o6as-0 wNcHG"
+      className="Label-sc-p42w1g-0 jPAJlC"
       htmlFor="tobase"
     >
       To
     </label>
     <select
       aria-label="Select number base to convert to"
-      className="Select-sc-c4x2an-0 kFNIMj"
+      className="Select-sc-31pzb-0 cuqxij"
       defaultValue={2}
       id="tobase"
       onChange={[Function]}
@@ -123,13 +123,13 @@ exports[`component App matches snapshot 1`] = `
       </option>
     </select>
     <label
-      className="Label-sc-44o6as-0 wNcHG"
+      className="Label-sc-p42w1g-0 jPAJlC"
       htmlFor="result"
     >
       Result
     </label>
     <input
-      className="Input-sc-1nwo6tk-0 euQOgX"
+      className="Input-sc-1qsdt6o-0 gKPVqn"
       disabled={true}
       id="result"
       type="text"

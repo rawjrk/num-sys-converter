@@ -3,4 +3,4 @@ import Footer from "./components/Footer";
 import Link from "./components/Link";
 
 export { Button, Footer, Link };
-export { Form, Label, Input, Select, Options } from "./components/Form";
+export { Form, Label, Input, Select, Options } from "./components/form";
